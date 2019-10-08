@@ -1,0 +1,29 @@
+<script>
+    //const keyword
+    var name = "abcd";
+    const email = "abcd@gmail.com";
+    function myFunction(){
+        name = "prabal";
+        //email = "prabal@gmail.com"; 
+        console.log(name);
+    } 
+    console.log(myFunction());
+
+
+    //rectangle with and without passing parameters
+    function rectangle(l,b){
+        console.log(l,b);
+    }
+    rectangle(2,3);
+    rectangle();
+
+
+    function rectangle1(l,b){
+        //giving default value to parameter in ecma6
+        l= l || 10;
+        b= b || 1;
+        console.log(l,b);
+    }
+    rectangle1();
+    rectangle1(1,2);
+</script>

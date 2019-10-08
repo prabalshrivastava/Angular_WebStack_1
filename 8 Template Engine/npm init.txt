@@ -1,0 +1,40 @@
+
+D:\development\Angular\8 Template Engine>npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (8-template engine) grunt
+version: (1.0.0)
+description: grunt file execution
+entry point: (1 Jade Template Engine.js)
+test command:
+git repository:
+keywords:
+author: prabal
+license: (ISC)
+About to write to D:\development\Angular\8 Template Engine\package.json:
+
+{
+  "name": "grunt",
+  "version": "1.0.0",
+  "description": "grunt file execution",
+  "main": "1 Jade Template Engine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "prabal",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)
+
+D:\development\Angular\8 Template Engine>

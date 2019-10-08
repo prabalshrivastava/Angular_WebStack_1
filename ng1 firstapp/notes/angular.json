@@ -1,0 +1,136 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",/*this defines the rules for parsing the angular.json*/
+  "version": 1,
+  "newProjectRoot": "projects",/*this gives the tag name for next line*/
+  "projects": {//can hold multiple projects
+    "firstApp": {//name of the project 
+      "root": "",//The root property specifies what’s the main directory with all project’s files. Probably will be an empty value for the main project of our workspace whereas it indicates for a specific directory for internal projects.
+      "sourceRoot": "src",//name of the folder that will contain the code
+      "projectType": "application",//application or library -->Using ng generate it’s possible now to create internal projects within our main project - which are configured as part of the general configuration file. Those projects could be generated as an internal application or library. That’s exactly the reason for the projectType property - a statement whether that project is an application or library.
+      "prefix": "app",//prefix for the components and other files if I am creating files using cli
+      "schematics": {},//workflow tool
+      "architect": {//to define what kind of builds are available and we can define our own builds--->Any project in a workspace able to contain and customize automatic task commands - such as bundling, serving, testing, linting and more. These are based on prebuilt builders and called Architect Targets.
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",//this command is called when you call ng build
+          "options": {//options to set while calling the above command
+            "outputPath": "dist/firstApp",//compiled code is kept over here
+            "index": "src/index.html",//name of the file which is the only html file
+            "main": "src/main.ts",//entry point of the application
+            "polyfills": "src/polyfills.ts",//this is for converting the older ecmascript to es6
+            "tsConfig": "src/tsconfig.app.json",//typescript compiler configuration file
+            "assets": [
+              "src/favicon.ico",//icon shown on the browsertab
+              "src/assets"//folder for all image files
+            ],
+            "styles": [
+              "src/styles.css"//global styles througout the application
+            ],
+            "scripts": [],//global js througout the application
+            "es5BrowserSupport": true//whether application supports es5 or not
+          },
+          "configurations": {//if we build for production
+            "production": {
+              "fileReplacements": [
+                {//replace environment.ts file with environment.prod.ts
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,//whether js files are to be minimized 
+              "outputHashing": "all",//
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",//command that executes when we run ng serve
+          "options": {
+            "browserTarget": "firstApp:build"//build and then run
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "firstApp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "firstApp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",//for running unit test cases there are 4 available- jasmine,karma,protactor,
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",//configuration of karma test cases
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "firstApp-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "firstApp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "firstApp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "firstApp"
+}

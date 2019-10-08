@@ -1,0 +1,19 @@
+<script>
+    function functionPrototype(param1,param2,param3){
+        this.name = param1;
+        this.rollNo = param2;
+        this.email = param3;
+    }
+
+    functionPrototype.prototype.address = 10;
+        debugger;
+    var functionPrototype1 = new functionPrototype(1,2,3);
+    console.log(functionPrototype1,functionPrototype.prototype, functionPrototype1.address);
+
+    var functionPrototype2 = new functionPrototype("a","b","c");
+    functionPrototype.prototype.add = 10;
+    console.log(functionPrototype2,functionPrototype.prototype, functionPrototype2.address);
+</script>
+        
+        
+        

@@ -1,0 +1,17 @@
+<script>
+    //closure
+
+    var add;
+    console.log(add = (function(factor){
+        var counter=0;
+        return function(f){counter +=f;return counter;}//this function will get assigned as a function to add variable
+    })(),add(10));       
+
+
+    var add;
+    console.log(add = (function(factor){
+        var counter=0;
+        return function(f){debugger; counter +=f;return counter;}//this function will get assigned as a function to add variable
+    })(),add(10));
+    
+</script>

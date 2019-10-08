@@ -1,0 +1,17 @@
+<script>
+    //function as a variable
+    var add1 = function(){
+        counter = 0; 
+        counter +=1;return counter;
+    };
+    console.log(add1());
+
+
+    //closure
+    var add;
+    console.log(add = (function(){
+        var counter=0;
+        return function(){counter +=1;return counter;}//this function will get assigned as a function to add variable
+    })(),add());
+    
+</script>   

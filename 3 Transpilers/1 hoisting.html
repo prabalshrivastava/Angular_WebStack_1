@@ -1,0 +1,14 @@
+<script>
+    var pony = {
+        name:"prabal",
+        isChampion : true
+    }; 
+    function getPonyFullName(pony){
+        if(pony.isChampion){
+            var name = 'champion' + pony.name;//this name is accessible outside also
+            return name;
+        }
+        return pony.name;//ie here-->this is applicable on javascript which is called as hoisting
+    }
+    console.log(getPonyFullName(pony));
+</script>

@@ -1,0 +1,25 @@
+<script>
+    //in javascript we have module pattern (encapsulation) 
+    //and uses singleton pattern as only 1 object is created named as module1 
+    //here module1 is a class in javascript
+    var module1 = (function(){
+        'use strict';//don't leave any variable as undefined
+        var _privateProperty = 'hello world';
+        var publicProperty = 'i am public property'
+        function _privateMethod(){
+            console.log(_privateProperty);
+        }
+        function publicMethod(){
+            _privateMethod();
+        }
+        return {publicMethod : publicMethod,publicProperty:publicProperty};
+        //whatever we return is made public property of that class
+        //for eg here publicMethod and publicProperty is made available outside of the class module1
+    }());
+
+    //private property is not defined so private members 
+    //of that module is not accessible outside the class 
+    //console.log(_privateProperty); //not defined
+    console.log(module1._privateProperty); //undefined
+    console.log(module1.publicMethod,module1.publicProperty);//accessible outside the module1 class
+</script>

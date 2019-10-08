@@ -1,0 +1,33 @@
+promise is a promise from codefragement1 that you go on executing the code
+and the result of the codefragement1 will be furnished soon 
+
+states : 
+1 initial state is pending 
+2 fulfilled
+3 rejected
+
+
+promise is for asynchronus calls eg ajax
+promise you can go on working on the webpage 
+and while asynchronusly image is getting downloaded in backgroud
+
+<script>
+    function readFile(filename,enc){
+        return new Promise(
+            function(fulfill,reject){
+                fs.readFile(filename,enc,function(err,res){
+                                            if(err) 
+                                                reject(err);
+                                            else 
+                                                fulfill(res);
+                                        }
+                );
+            }
+        );
+    }
+    
+    var read = readFile("abc",10);
+    read.fulfill(res){
+        
+    }
+</script>
